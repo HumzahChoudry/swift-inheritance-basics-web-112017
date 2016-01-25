@@ -11,7 +11,7 @@
 
 ## Inheritance
 
-Swift offers **single inheritance** to its classes (and structs). The syntax for defining a class's superclass is pretty intuitive. It simply involves adding a colon `:` after the subclass's name and inserting the superclass's name before the opening curly brace that defines the class:
+Swift offers **single inheritance** to its classes. The syntax for defining a class's superclass simply involves adding a colon `:` after the subclass's name and inserting the superclass's name before the opening curly brace that defines the class:
 
 ```swift
 class SubclassName: SuperClassName {...}
@@ -19,7 +19,7 @@ class SubclassName: SuperClassName {...}
 
 ### Inheriting From `NSObject`
 
-While Swift's base classes don't require inheritance from `NSObject` as a default, it is still available as an option when creating a class. To create a Swift-y subclass of `NSObject` named `Ponso`, we would begin the class's definition like this:
+While Swift's base classes don't require inheritance from `NSObject`, it is still available as an option when creating a class. To create a Swift-y subclass of `NSObject` named `Ponso`, we would begin the class's definition like this:
 
 ```swift
 class Ponso: NSObject {...}
@@ -29,7 +29,7 @@ That's pretty straightforward.
 
 ### Creating a Subclass
 
-Let's declare a Swift base class named `Item` with a couple of properties and a customized print function:
+Let's declare a class named `Item` with a couple of properties and a customized print function:
 
 ```swift
 class Item {
@@ -42,7 +42,7 @@ class Item {
 }
 ```
 
-Now let's subclass it into a new class `GroceryItem` and add an optional property for an expiration date:
+Now let's subclass it in a new class `GroceryItem` and add an optional property for an expiration date:
 
 ```swift 
 class GroceryItem: Item {
@@ -70,7 +70,7 @@ We're able to access the `priceInCents` property within `GroceryItem`'s definiti
 
 ### Overriding a Superclass Method
 
-In order to override a superclass's method, the method must be declared on the subclass as usual, but be preceded by the `override` keyword to clearly distinguish it as an override:
+In order to override a superclass's method, we re-declare the method in the subclass, but precede it with the `override` keyword:
 
 ```swift
 class SubclassName: SuperclassName {
@@ -80,7 +80,7 @@ class SubclassName: SuperclassName {
 }
 ```
 
-To override `Item`'s `printInfo()` method on `GroceryItem`, we could write something like this:
+So, to override `Item`'s `printInfo()` method on `GroceryItem`, we could write something like this:
 
 ```swift
 class GroceryItem: Item {
@@ -96,9 +96,9 @@ class GroceryItem: Item {
 
 This will cause a different implementation of `printInfo()` to run instead when the method is called on an instance of `GroceryItem`.
 
-#### Including the Superclass's Method During An Override
+#### Calling the Superclass's Method In An Override
 
-In certain cases (especially for view controller lifecycle methods such as `ViewDidLoad()`, `ViewDidAppear()`, etc.), the superclass's version of an overridden method can still be desirable or even necessary. In these cases, the superclass's method can be called by sending the method call to the `super` keyword:
+In certain cases (especially for view controller lifecycle methods such as `viewDidLoad` and `viewDidAppear`), the superclass's version of the method can still be desirable or even necessary. In these cases, the superclass's method can be invoked by using the `super` keyword:
 
 ```swift
 class SubclassName: SuperclassName {
@@ -128,7 +128,7 @@ class GroceryItem: Item {
 
 This version of the override will now print the `Item`'s information as normal, and *then* it print the additional line with the expiration date.
 
-When working with Cocoa and Cocoa Touch, you will see this pattern of calling the superclass's implementation during an override:
+When working with Cocoa, you will see this pattern of calling the superclass's implementation during an override:
 
 ```swift
 class ViewController: UIViewController {
@@ -160,8 +160,6 @@ You may have already seen the syntax for this in the AppDelegate:
 //    subclass     superclass   protocol
 class AppDelegate: UIResponder, UIApplicationDelegate {...}
 ```
-
-While this may have the initial appearance of presenting the `AppDelegate` class with "double inheritance", it actually is **not** (Swift only supports single inheritance); `UIApplicationDelegate` is a *protocol*.
 
 **Note:** *If you're unfamiliar with the concept of protocols and delegates, we'll cover it later. For the time being, just recognize the distinction between superclasses and protocols despite the parallel syntax.*
 
