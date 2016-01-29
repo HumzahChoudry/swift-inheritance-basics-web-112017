@@ -176,3 +176,5 @@ Or, if the superclass is not listed first:
 class Ponso: UITextFieldDelegate, NSObject {...}  // error
 ```
 ![](https://curriculum-content.s3.amazonaws.com/swift/swift-inheritance-basics/error_superclass_not_listed_first.png)
+
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/swift-inheritance-basics' title='Swift Inheritance Basics'>Swift Inheritance Basicsy</a> on Learn.co and start learning to code for free.</p>
